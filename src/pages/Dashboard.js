@@ -99,7 +99,7 @@ const Dashboard = () => {
               >
                 <Box sx={{ maxWidth: '70%', position: 'relative', zIndex: 1 }}>
                   <Typography variant="h4" sx={{ fontWeight: 'bold', mb: 1 }}>
-                    Welcome, {localStorage.getItem('username') || 'User'}! 👋
+                  Welcome, {localStorage.getItem('userName') || 'User'}! 👋
                   </Typography>
                   <Typography variant="h6">
                     {currentTime.toLocaleTimeString()} ⏰

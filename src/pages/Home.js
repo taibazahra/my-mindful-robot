@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   Box,
@@ -12,6 +12,7 @@ import {
 const Home = () => {
   const [name, setName] = useState('');
   const navigate = useNavigate();
+  const inputRef = useRef(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -20,6 +21,16 @@ const Home = () => {
       navigate('/dashboard');
     }
   };
+
+  // ✅ Defer focus to avoid scroll jump
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (inputRef.current) {
+        inputRef.current.focus();
+      }
+    }, 0);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <Container maxWidth="sm">
@@ -49,6 +60,7 @@ const Home = () => {
           </Typography>
           <form onSubmit={handleSubmit}>
             <TextField
+              inputRef={inputRef}
               fullWidth
               label="What's your name?"
               variant="outlined"
@@ -73,4 +85,4 @@ const Home = () => {
   );
 };
 
-export default Home; 
+export default Home;

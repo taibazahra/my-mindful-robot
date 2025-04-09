@@ -5,6 +5,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { IconButton, Box } from '@mui/material';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
+import ScrollToTop from './components/ScrollToTop';
 
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
@@ -12,7 +13,6 @@ import Dashboard from './pages/Dashboard';
 function App() {
   const [mode, setMode] = useState('light');
 
-  // Load from localStorage if available
   useEffect(() => {
     const storedMode = localStorage.getItem('themeMode');
     if (storedMode) {
@@ -20,7 +20,6 @@ function App() {
     }
   }, []);
 
-  // Update localStorage on mode change
   useEffect(() => {
     localStorage.setItem('themeMode', mode);
   }, [mode]);
@@ -29,7 +28,7 @@ function App() {
     setMode((prev) => (prev === 'light' ? 'dark' : 'light'));
   };
 
-  const theme = useMemo(() => 
+  const theme = useMemo(() =>
     createTheme({
       palette: {
         mode,
@@ -63,7 +62,7 @@ function App() {
           transition: 'background-color 0.3s ease',
         }}
       >
-        {/* Toggle Button (top-right corner) */}
+        {/* Toggle Button */}
         <Box sx={{ display: 'flex', justifyContent: 'flex-end', mb: 1 }}>
           <IconButton onClick={toggleTheme} color="inherit">
             {mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
@@ -71,6 +70,7 @@ function App() {
         </Box>
 
         <Router>
+          <ScrollToTop /> {/* ✅ This is the only new line */}
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/dashboard" element={<Dashboard />} />
