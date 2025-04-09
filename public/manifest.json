@@ -1,0 +1,10 @@
+{
+    "name": "Mindful Chatbot",
+    "short_name": "MindBot",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#a8e6cf",
+    "icons": []
+  }
+  
