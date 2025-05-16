@@ -1,0 +1,47 @@
+.thought-journal {
+    background-color: #f5f5fa;
+    padding: 20px;
+    margin: 30px auto;
+    border-radius: 16px;
+    max-width: 700px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  }
+  
+  .thought-journal h2 {
+    font-size: 1.6rem;
+    color: #333;
+    margin-bottom: 15px;
+  }
+  
+  .thought-journal textarea {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    resize: vertical;
+    margin-bottom: 10px;
+  }
+  
+  .thought-journal button {
+    padding: 10px 18px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+  
+  .thought-journal button:hover {
+    background-color: #388e3c;
+  }
+  
+  .journal-entries .entry {
+    background: #e8f5e9;
+    margin-top: 10px;
+    padding: 12px;
+    border-radius: 10px;
+  }
+  
