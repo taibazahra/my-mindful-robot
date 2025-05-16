@@ -19,16 +19,25 @@ import ChatBot from '../components/ChatBot';
 import CalendarAffirmation from '../components/CalendarAffirmation';
 import JournalPrompts from '../components/JournalPrompts';
 import JournalCalendar from '../components/JournalCalendar';
+import SentimentAnalysis from '../components/SentimentAnalysis';
+import TextSummarizer from '../components/TextSummarizer';
+import PersonalizedRecommendations from '../components/PersonalizedRecommendations';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import SelfImprovementIcon from '@mui/icons-material/SelfImprovement';
 import PsychologyIcon from '@mui/icons-material/Psychology';
+import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt';
+import SummarizeIcon from '@mui/icons-material/Summarize';
+import RecommendIcon from '@mui/icons-material/Recommend';
 
 const Dashboard = () => {
   const theme = useTheme();
   const [currentTime, setCurrentTime] = useState(new Date());
 
   useEffect(() => {
+    // Set initial scroll position to top
+    window.scrollTo(0, 0);
+    
     const timer = setInterval(() => {
       setCurrentTime(new Date());
     }, 1000);
@@ -173,6 +182,51 @@ const Dashboard = () => {
                   <Typography variant="h6" sx={{ fontWeight: 'bold' }}>Gratitude Journal 📝</Typography>
                 </Box>
                 <GratitudeJournal />
+              </Paper>
+            </Grid>
+
+            <Grid item>
+              <Paper sx={{
+                ...createPaperStyle('linear-gradient(135deg, #ffd3b6 0%, #ffaaa5 100%)', 'linear-gradient(135deg, #ffb6b9 0%, #fae3d9 100%)'),
+                '&:before': {
+                  top: 0, right: 0, width: '120px', height: '120px', transform: 'translate(50%, -50%)',
+                },
+              }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', mb: 2, zIndex: 1, position: 'relative' }}>
+                  <Avatar sx={{ width: 40, height: 40, bgcolor: 'rgba(255,255,255,0.2)', mr: 2 }}><SentimentSatisfiedAltIcon /></Avatar>
+                  <Typography variant="h6" sx={{ fontWeight: 'bold' }}>AI Sentiment Analysis 🤖</Typography>
+                </Box>
+                <SentimentAnalysis />
+              </Paper>
+            </Grid>
+
+            <Grid item>
+              <Paper sx={{
+                ...createPaperStyle('linear-gradient(135deg, #a8e6cf 0%, #dcedc1 100%)', 'linear-gradient(135deg, #4ecca3 0%, #a7e9af 100%)'),
+                '&:before': {
+                  bottom: 0, left: 0, width: '120px', height: '120px', transform: 'translate(-50%, 50%)',
+                },
+              }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', mb: 2, zIndex: 1, position: 'relative' }}>
+                  <Avatar sx={{ width: 40, height: 40, bgcolor: 'rgba(255,255,255,0.2)', mr: 2 }}><SummarizeIcon /></Avatar>
+                  <Typography variant="h6" sx={{ fontWeight: 'bold' }}>AI Text Summarizer 📝</Typography>
+                </Box>
+                <TextSummarizer />
+              </Paper>
+            </Grid>
+
+            <Grid item>
+              <Paper sx={{
+                ...createPaperStyle('linear-gradient(135deg, #00c6fb 0%, #005bea 100%)', 'linear-gradient(135deg, #2193b0 0%, #6dd5ed 100%)'),
+                '&:before': {
+                  top: 0, left: 0, width: '150px', height: '150px', transform: 'translate(-50%, -50%)',
+                },
+              }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', mb: 2, zIndex: 1, position: 'relative' }}>
+                  <Avatar sx={{ width: 40, height: 40, bgcolor: 'rgba(255,255,255,0.2)', mr: 2 }}><RecommendIcon /></Avatar>
+                  <Typography variant="h6" sx={{ fontWeight: 'bold' }}>AI Recommendations 🎯</Typography>
+                </Box>
+                <PersonalizedRecommendations />
               </Paper>
             </Grid>
 

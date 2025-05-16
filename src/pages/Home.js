@@ -24,13 +24,19 @@ const Home = () => {
 
   // ✅ Defer focus to avoid scroll jump
   useEffect(() => {
-    const timer = setTimeout(() => {
+    // Always force to top after full mount + next paint
+    requestAnimationFrame(() => {
+      window.scrollTo(0, 0);
       if (inputRef.current) {
-        inputRef.current.focus();
+        inputRef.current.focus({ preventScroll: true });
       }
-    }, 0);
-    return () => clearTimeout(timer);
+    });
   }, []);
+  
+  useEffect(() => {
+    console.log('Scroll position on mount:', window.scrollY);
+  }, []);
+  
 
   return (
     <Container maxWidth="sm">

@@ -1,13 +1,18 @@
 // src/components/ScrollToTop.js
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
+  const isFirstRender = useRef(true);
 
   useEffect(() => {
-    // Scroll to top on route change
-    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+    
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   }, [pathname]);
 
   return null;
